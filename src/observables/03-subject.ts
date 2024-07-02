@@ -16,24 +16,16 @@ const intervalo$ = new Observable<number>((subs) => {
   };
 });
 
-// ! SI queremos que lo que mande nuestro observable sea lo mismo para todas las suscripciones, esto sin importar si tenemos un Math.random
-
-// const subs1$ = intervalo$.subscribe((data) => {
-//   console.log(`subs1:${data}`);
-// });
-// const subs2$ = intervalo$.subscribe((data) => {
-//   console.log(`subs2:${data}`);
-// });
-
 /**
  * 1- Casteo multiple
  * Muchas suscripciones estan sujetas entonces sirve para eliminar todas las suscripciones
- *
- * 2- Tambien es un observer
- *
- * 3- Next, error y complete | Se pueden manejar
- */
+*
+* 2- Tambien es un observer
+*
+* 3- Next, error y complete | Se pueden manejar
+*/
 
+// ! SI queremos que lo que mande nuestro observable sea lo mismo para todas las suscripciones, esto sin importar si tenemos un Math.random
 const subject$ = new Subject();
 const intervalSubject = intervalo$.subscribe(subject$);
 
