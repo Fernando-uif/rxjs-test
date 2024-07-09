@@ -1,4 +1,8 @@
-import { distinctUntilChanged, distinctUntilKeyChanged, from } from "rxjs";
+import { distinct, from, of } from "rxjs";
+
+const num$ = of(1, "1", 1, 3, 33, 4, 4, 5, 5, 34, 44, 3, 44, 4, 5, 1, "1");
+
+num$.pipe(distinct()).subscribe(console.log);
 
 interface Personaje {
   nombre: string;
@@ -21,14 +25,10 @@ const personaje: Personaje[] = [
     nombre: "zero",
   },
   {
-    nombre: "zero",
-  },
-  {
     nombre: "fer",
   },
 ];
 
-// True los quita porque son iguales
 from(personaje)
-  .pipe(distinctUntilKeyChanged('nombre'))
+  .pipe(distinct((character) => character.nombre))
   .subscribe(console.log);

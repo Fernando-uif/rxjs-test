@@ -29,6 +29,4 @@ const personaje: Personaje[] = [
 ];
 
 // True los quita porque son iguales
-from(personaje)
-  .pipe(distinctUntilKeyChanged('nombre'))
-  .subscribe(console.log);
+from(personaje).pipe(distinctUntilKeyChanged("nombre")).subscribe(console.log);
